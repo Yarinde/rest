@@ -1,12 +1,13 @@
 {
-  "name": "restful",
+  "name": "oop",
   "version": "1.0.0",
   "description": "My Project\r ---",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "compile": "webpack",
-    "start": "node server.js"
+    "start": "node server.js",
+    "dev": "lite-server"
   },
   "keywords": [],
   "author": "yarinde",
@@ -16,9 +17,12 @@
     "babel-loader": "^7.1.2",
     "babel-preset-latest": "^6.24.1",
     "babel-preset-react": "^6.24.1",
+    "es6-module-loader": "^0.17.11",
     "express": "^4.15.5",
+    "lite-server": "^2.3.0",
     "react": "^15.6.2",
     "react-dom": "^15.6.2",
+    "tracer": "^0.8.11",
     "webpack": "^3.6.0",
     "webpack-dev-middleware": "^1.12.0"
   },
