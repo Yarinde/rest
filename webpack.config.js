@@ -1,14 +1,20 @@
 const path = require('path');
+const webpack = require('webpack');
 
 module.exports = {
     context: path.join(__dirname, 'src'),
     entry: [
-        './main.js'
+        './app.js'
     ],
     output: {
         path: path.join(__dirname, 'www'),
         filename: 'bundle.js',
     },
+    plugins: [
+        new webpack.ProvidePlugin({
+            $: "jquery"
+        })
+    ],
     module: {
         rules: [
             {
