@@ -1,8 +1,26 @@
 <html>
 <head>
-	<script src="/bundle.js" ></script>
+	<script src="/bundle.js"></script>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
 </head>
 <body>
 <div id="mount"></div>
+<div id="anim" style="position: absolute;">kdkdkdkdkdk</div>
+<script>
+    $('#anim').click(function () {
+        var left = 0, distance = 100;
+
+        function frame() {
+            left++;
+            $('#anim').css('left', left);
+
+            if (left == distance)
+                clearInterval(timeId);
+        }
+
+        var timeId = setInterval(frame, 10); // draw every 10ms
+
+    });
+</script>
 </body>
 </html>
