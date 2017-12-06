@@ -18,11 +18,15 @@
     "babel-preset-react": "^6.24.1",
     "express": "^4.15.5",
     "react": "^15.6.2",
+    "react-bootstrap": "^0.31.5",
     "react-dom": "^15.6.2",
+    "react-redux": "^5.0.6",
     "webpack": "^3.6.0",
     "webpack-dev-middleware": "^1.12.0"
   },
-  "devDependencies": {},
+  "devDependencies": {
+    "babel-preset-stage-0": "^6.24.1"
+  },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/Yarinde/rest.git"
