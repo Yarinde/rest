@@ -4,7 +4,7 @@
   "description": "My Project\r ---",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "test": "jest",
     "compile": "webpack",
     "start": "node server.js"
   },
@@ -27,6 +27,7 @@
   },
   "devDependencies": {
     "babel-preset-stage-0": "^6.24.1",
+    "jest": "^21.2.1",
     "redux-devtools": "^3.4.1"
   },
   "repository": {
