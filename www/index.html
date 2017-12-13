@@ -1,8 +1,27 @@
 <html>
 <head>
-	<script src="/bundle.js" ></script>
+	<script src="/bundle.js"></script>
 </head>
 <body>
-<div id="mount"></div>
+<div id="app"></div>
+<p>Static</p>
+<button id="request">Request</button>
+<div id="bio"></div>
+<script>
+    let PromiseToClean = new Promise(function (resolve, reject) {
+        let isClean = false;
+        if (isClean) {
+            resolve('clean');
+        } else {
+            reject('not clean');
+        }
+    });
+    
+	PromiseToClean.then(function(fromResolve) {
+	    console.log('the room is ' + fromResolve);
+	}).catch(function(fromReject) {
+	    console.log('the room is ' + fromReject);
+	})
+</script>
 </body>
 </html>
