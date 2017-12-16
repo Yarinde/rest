@@ -1,4 +1,4 @@
-function todoReducer(state = [], action) {
+function reducer(state = [], action) {
     switch (action.type) {
         case('CREATE_NEW_TODO'):
             return {
@@ -21,26 +21,19 @@ function todoReducer(state = [], action) {
                         : todo,
                 ),
             };
-        case('GET_DEFAULT_TODOS'):
+        case('GET_DEFAULT_LOCATIONS'):
             return {
                 ...state,
-                todoItems: [...action.payload] };
-        case ('DISABLE_ALL_TODOS'):
+                locations: [...action.payload]};
+                // selectedLocation: action.payload[0].id};
+        case('CHANGE_LOCATION'):
             return {
                 ...state,
-                todoItems: state.todoItems.map(function (todo) {
-                    todo.isChecked = false;
-                    return todo;
-                }),
-            };
-        case('SET_FILTER'):
-            return {
-                ...state,
-                filter: action.filter,
+                selectedLocation: action.payload,
             };
         default:
             return state;
     }
 }
 
-export default todoReducer;
+export default reducer;

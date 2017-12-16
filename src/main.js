@@ -11,12 +11,32 @@ export class ForecastApp extends PureComponent {
     }
 
     componentDidMount() {
+        let payload = [
+            {
+                id: 0,
+                name: 'Ashdod',
+            },
+            {
+                id: 1,
+                name: 'Tel Aviv'
+            },
+            {
+                id: 2,
+                name: 'Ashkelon',
+            },
+            {
+                id: 3,
+                name: 'Herzelia',
+            },
+        ];
+        this.props.getDefaultLocations(payload);
     }
 
     render() {
+        const { locations } = this.props;
         return (
             <Grid>
-                <ContentHeader />
+                <ContentHeader locations={locations}/>
                 <ForecastCont />
             </Grid>
         );
@@ -26,14 +46,13 @@ export class ForecastApp extends PureComponent {
 
 function mapStateToProps(state) {
     return {
-        // todoItems: state.todoItems,
-        // filter: state.filter,
+        locations: state.locations,
     };
 }
 
 function mapDispatchToProps(dispatch) {
     return {
-        // getDefaultTodos: (payload) => dispatch({ type: 'GET_DEFAULT_TODOS', payload: payload}),
+        getDefaultLocations: (payload) => dispatch({ type: 'GET_DEFAULT_LOCATIONS', payload: payload}),
     };
 }
 

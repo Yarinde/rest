@@ -3,9 +3,9 @@ import { render } from 'react-dom';
 import { Provider } from 'react-redux';
 import { createStore } from 'redux';
 import ForecastApp from './main';
-import todoReducer from './todoReducer';
+import reducer from './reducer';
 
-let store = createStore(todoReducer);
+let store = createStore(reducer);
 
 render(
     <Provider store={store}>

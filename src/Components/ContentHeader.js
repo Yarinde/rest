@@ -4,7 +4,13 @@ import { NavDropdown, NavItem, Nav, MenuItem, Navbar } from 'react-bootstrap';
 
 class ContentHeader extends PureComponent {
 
+    changeLocation(e) {
+        let locationId = e.currentTarget.dataset.id;
+        this.props.changeLocationById(locationId);
+    }
+
     render() {
+        const { locations } = this.props;
         return (
             <Navbar inverse collapseOnSelect>
                 <Navbar.Header>
@@ -15,13 +21,10 @@ class ContentHeader extends PureComponent {
                 </Navbar.Header>
                 <Navbar.Collapse>
                     <Nav>
-                        <NavItem eventKey={1} href="#">Link</NavItem>
-                        <NavDropdown eventKey={2} title="Dropdown" id="basic-nav-dropdown">
-                            <MenuItem eventKey={2.1}>Action</MenuItem>
-                            <MenuItem eventKey={2.2}>Another action</MenuItem>
-                            <MenuItem eventKey={2.3}>Something else here</MenuItem>
-                            <MenuItem divider />
-                            <MenuItem eventKey={2.3}>Separated link</MenuItem>
+                        <NavDropdown eventKey={1} title="Select Location">
+                            {locations && locations.map((item) => {
+                                return <MenuItem key={item.id} data-id={item.id} onClick={this.changeLocation}>{item.name}</MenuItem>
+                            })}
                         </NavDropdown>
                     </Nav>
                 </Navbar.Collapse>
@@ -32,14 +35,13 @@ class ContentHeader extends PureComponent {
 
 function mapStateToProps(state) {
     return {
-        // surfLocations:
     };
 }
 
 function mapDispatchToProps(dispatch) {
     return {
-        // getAllLocations:
-    };
+        changeLocationById: (payload) => dispatch({ type: 'CHANGE_LOCATION', payload: payload}),
+};
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(ContentHeader);
