@@ -1,15 +1,15 @@
-import React from 'react'
-import { render } from 'react-dom'
-import { Provider } from 'react-redux'
-import { createStore } from 'redux'
-import TodoApp from './main';
+import React from 'react';
+import { render } from 'react-dom';
+import { Provider } from 'react-redux';
+import { createStore } from 'redux';
+import ForecastApp from './main';
 import todoReducer from './todoReducer';
 
 let store = createStore(todoReducer);
 
 render(
     <Provider store={store}>
-        <TodoApp />
+        <ForecastApp />
     </Provider>,
     document.getElementById('todoApp')
 );
