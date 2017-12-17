@@ -1,12 +1,18 @@
 import React, { PureComponent } from 'react';
 import { connect } from 'react-redux';
-import { NavDropdown, NavItem, Nav, MenuItem, Navbar } from 'react-bootstrap';
+import { NavDropdown, Nav, MenuItem, Navbar } from 'react-bootstrap';
 
 class ContentHeader extends PureComponent {
 
     changeLocation(e) {
         let locationId = e.currentTarget.dataset.id;
         this.props.changeLocationById(locationId);
+    }
+
+    componentDidMount() {
+        // if(this.props.locations) {
+        //     this.props.changeLocationById(this.props.locations[0].id)
+        // }
     }
 
     render() {
@@ -23,7 +29,7 @@ class ContentHeader extends PureComponent {
                     <Nav>
                         <NavDropdown eventKey={1} title="Select Location">
                             {locations && locations.map((item) => {
-                                return <MenuItem key={item.id} data-id={item.id} onClick={this.changeLocation}>{item.name}</MenuItem>
+                                return <MenuItem key={item.id} data-id={item.id} onClick={this.changeLocation.bind(this)}>{item.name}</MenuItem>
                             })}
                         </NavDropdown>
                     </Nav>
@@ -35,6 +41,7 @@ class ContentHeader extends PureComponent {
 
 function mapStateToProps(state) {
     return {
+        locations: state.locations,
     };
 }
 

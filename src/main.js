@@ -18,7 +18,7 @@ export class ForecastApp extends PureComponent {
             },
             {
                 id: 1,
-                name: 'Tel Aviv'
+                name: 'Tel Aviv',
             },
             {
                 id: 2,
@@ -29,15 +29,28 @@ export class ForecastApp extends PureComponent {
                 name: 'Herzelia',
             },
         ];
+        let forecast = {
+            id: 1,
+            height: 300,
+            condition: 30,
+            windCondition: 20,
+            windDirection: "NW",
+            seaTemp: 21,
+            AirTemp: 13,
+        };
         this.props.getDefaultLocations(payload);
+        this.props.changeLocationById(payload[0].id);
+        this.props.getForecastForLocation(forecast);
     }
 
     render() {
-        const { locations } = this.props;
+        const { locations, selectedLocation, selectedLocationForecast } = this.props;
         return (
             <Grid>
-                <ContentHeader locations={locations}/>
-                <ForecastCont />
+                {console.log(this.props)}
+                <ContentHeader locations={locations} />
+                <ForecastCont selectedLocation={locations ? locations[selectedLocation] : ""}
+                              selectedLocationForecast={selectedLocationForecast} />
             </Grid>
         );
     }
@@ -47,12 +60,16 @@ export class ForecastApp extends PureComponent {
 function mapStateToProps(state) {
     return {
         locations: state.locations,
+        selectedLocation: state.selectedLocation,
+        selectedLocationForecast: state.selectedLocationForecast,
     };
 }
 
 function mapDispatchToProps(dispatch) {
     return {
-        getDefaultLocations: (payload) => dispatch({ type: 'GET_DEFAULT_LOCATIONS', payload: payload}),
+        getDefaultLocations: (payload) => dispatch({ type: 'GET_DEFAULT_LOCATIONS', payload: payload }),
+        changeLocationById: (payload) => dispatch({ type: 'CHANGE_LOCATION', payload: payload }),
+        getForecastForLocation: (payload) => dispatch({ type: 'GET_FORECAST_FOR_LOCATION', payload: payload }),
     };
 }
 

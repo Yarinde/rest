@@ -3,7 +3,7 @@ import { render } from 'react-dom';
 import { Provider } from 'react-redux';
 import { createStore } from 'redux';
 import ForecastApp from './main';
-import reducer from './reducer';
+import reducer from './services/reducer';
 
 let store = createStore(reducer);
 
