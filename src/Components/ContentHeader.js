@@ -1,6 +1,6 @@
 import React, { PureComponent } from 'react';
 import { connect } from 'react-redux';
-import { NavDropdown, Nav, MenuItem, Navbar } from 'react-bootstrap';
+import { NavDropdown, Nav, MenuItem, Navbar, NavItem } from 'react-bootstrap';
 
 class ContentHeader extends PureComponent {
 
@@ -17,19 +17,19 @@ class ContentHeader extends PureComponent {
 
     render() {
         const { locations } = this.props;
+        console.log(locations);
         return (
             <Navbar inverse collapseOnSelect>
                 <Navbar.Header>
                     <Navbar.Brand>
                         <a href="#">Surf-With-Ohana</a>
                     </Navbar.Brand>
-                    <Navbar.Toggle />
                 </Navbar.Header>
                 <Navbar.Collapse>
                     <Nav>
-                        <NavDropdown eventKey={1} title="Select Location">
+                        <NavDropdown eventKey={2} title="Select Location" id="basic-nav-dropdown">
                             {locations && locations.map((item) => {
-                                return <MenuItem key={item.id} data-id={item.id} onClick={this.changeLocation.bind(this)}>{item.name}</MenuItem>
+                                return <MenuItem key={item.id} id={item.id} data-id={item.id}>{item.name}</MenuItem>;
                             })}
                         </NavDropdown>
                     </Nav>
@@ -47,8 +47,8 @@ function mapStateToProps(state) {
 
 function mapDispatchToProps(dispatch) {
     return {
-        changeLocationById: (payload) => dispatch({ type: 'CHANGE_LOCATION', payload: payload}),
-};
+        changeLocationById: (payload) => dispatch({ type: 'CHANGE_LOCATION', payload: payload }),
+    };
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(ContentHeader);

@@ -14,6 +14,16 @@ function reducer(state = [], action) {
                 ...state,
                 selectedLocation: action.payload,
             };
+        case('GET_FORCAST_SUCCESS'):
+            return {
+                ...state,
+                selectedLocation: action.payload,
+            };
+        case('GET_FORCAST_ERROR'):
+            return {
+                ...state,
+                error: action.payload,
+            };
         default:
             return state;
     }
